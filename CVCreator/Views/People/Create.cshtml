@@ -1,0 +1,147 @@
+﻿@model CVCreator.Models.Person
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create new CV</h2>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Personal Information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Birth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id ="divEducation"class="form-group">
+            @foreach (var e in Model.Educations)
+            {
+                <div>@Html.Partial("_Education", e)</div>
+            }
+        </div>
+            <input class ="add" type="button" data-field="#divEducation" data-url="/People/_Education/" value="Dodaj Szkołę"/>
+
+        <div id="divExperience" class="form-group">
+            @foreach (var e in Model.Experiences)
+            {
+                <div>@Html.Partial("_Experience", e)</div>
+            }
+        </div>
+            <input class ="add" type="button" data-field="#divExperience" data-url="/People/_Experience/" value="Dodaj doświadczenie" />
+
+        <div id ="divLanguage"class="form-group">
+            @foreach (var l in Model.Languages)
+            {
+                <div>@Html.Partial("_Language", l)</div>
+            }
+        </div>
+            <input class ="add" type="button" data-field="#divLanguage" data-url="/People/_Language/" value="Dodaj Język"/>
+
+        <div id="divSkill" class="form-group">
+            @foreach (var s in Model.Skills)
+            {
+                <div>@Html.Partial("_Skill", s)</div>
+            }
+        </div>
+            <input class ="add" type="button" data-field="#divSkill" data-url="/People/_Skill/" value="Dodaj umiejętność" />
+
+        <div id="divCertification" class="form-group">
+            @foreach (var c in Model.Certifications)
+            {
+                <div>@Html.Partial("_Certification", c)</div>
+            }
+        </div>
+            <input class ="add" type="button" data-field="#divCertification" data-url="/People/_Certification" value="Dodaj Certyfikat"  />
+
+         <div class="col-md-12" style="margin-top:20px;">
+             <input type="submit" value="Create" class="btn btn-default sbmt"/>
+         </div>
+</div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.add').click(function () {
+            var u = $(this).attr('data-url');
+            var d = $(this).attr('data-field');
+            var hidden = "<div id='hiddenDIV' class='dnone'></div>";
+            $.ajax({
+                url: u,
+                type: 'POST',
+                contentType: 'application/html',
+                success: function (content) {
+                    $(d).append(hidden);
+                    $(content).appendTo(d + ' .dnone:last-child');
+                    $(d+ ' .dnone:last-child').show('slow');
+                },
+                error: function (e) { }
+            });
+        });
+
+        $('body').on('click', '#remover', function () {
+            $(this).parent().parent().hide('slow');
+                $(this).parent().remove();
+        });
+
+
+    });
+
+
+</script>
+}

@@ -1,0 +1,234 @@
+﻿
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    text-align:center;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    width:100%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+.edu{
+
+}
+.dnone{
+    display:none;
+}
+
+.add{
+    display: block;
+	margin: 0 auto;
+	padding: 0;
+	width: 250px;
+	height: 70px;
+	border: 2px solid #1ECD97;
+	border-radius: 40px;
+	background: transparent;
+	color: #1ECD97;
+	letter-spacing: 1px;
+	font-size: 18px;
+	-webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+	transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+}
+
+.add:hover{
+    background-color: #1ECD97;
+	color: #fff;
+}
+
+.add:focus{
+    outline:none;
+}
+.add:after{
+    color: #1c654f;
+}
+
+.text-box{
+    border: 2px solid #1ECD97;
+    height: 40px;
+}
+.rmv{
+    display: block;
+	margin: 0 auto 20px auto;
+	padding: 0;
+	width: 50px;
+	height: 50px;
+	border: 2px solid #d14545;
+	border-radius: 30px;
+	background: transparent;
+	color: #d14545;
+	letter-spacing: 1px;
+	font-size: 18px;
+	-webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+	transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+}
+.rmv:hover{
+    background-color: #d14545;
+	color: #fff;
+}
+.rmv:focus{
+    outline:none;
+}
+.sbmt{
+    display: block;
+	margin: 0 auto;
+	padding: 0;
+	width: 250px;
+	height: 70px;
+	border: 2px solid white;
+	border-radius: 40px;
+	background: #1ECD97;
+	color: white;
+	letter-spacing: 1px;
+	font-size: 18px;
+	-webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+	transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+}
+.sbmt:hover{
+    background-color: white;
+	color: #1ECD97;
+}
+
+.sbmt:focus{
+    outline:none;
+}
+.sbmt:after{
+    color: #1c654f;
+}
+/*a{
+  text-decoration: none;
+}
+header, form{
+	padding: 4em 10%;
+}
+
+header{
+	background-color: $blue;
+	color: white;
+	h1{
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 50px;
+		margin-bottom: 10px;
+    i{
+      color: darken($blue, 10%);
+    }
+		span{
+			font-weight:300;
+		}
+	}
+	p{
+		font-weight: 400;
+		font-size: 16px;
+		color: rgba(255,255,255,.9);
+     letter-spacing: .05em;
+     margin-bottom: 10px;
+	}
+  h3, 
+  h3 a{
+    color: #32CCFE;
+      }
+    }
+.form-group{
+	margin-bottom: 20px;
+}
+h2.heading{
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: left;
+	color: $asphalt;
+	border-bottom: 1px solid $asphalt;
+	padding-bottom: 3px;
+	margin-bottom: 20px;
+}
+.controls{
+	text-align: left;
+	position: relative;
+	input[type="text"];
+	select{
+		padding: 12px;
+		font-size: 14px;
+		border: 1px solid $border;
+		width: 100%;
+		margin-bottom: 18px;
+		color: #888;
+		font-family: 'Lato', 'sans-serif';
+		font-size: 16px;
+		font-weight: 300;
+     background-color: #fff;
+		@include border-radius(2px);
+		@include transition(all .3s);
+
+		&:focus, &:hover{
+			outline: none;
+			border-color: $border-focus;
+			+ label{
+				color: $blue;
+          cursor: text;
+			}
+		}
+	}
+	.fa-sort{
+		position:absolute;
+		right: 10px;
+		top: 17px;
+		color: #999;
+	}
+	select{
+		@include appearance(none);
+		cursor: pointer;
+	}
+	label{
+		position: absolute;
+		left: 8px;
+		top: 12px;
+		color: #999;
+		font-size: 16px;
+		display: inline-block;
+		padding: 4px 10px;
+		font-weight: 400;
+		background-color: rgba(255,255,255,0);
+    pointer-events: none;
+		@include transition(color .3s, top .3s, background-color .8s);
+		&.active{
+			top: -11px;
+			color: #555;
+       background-color: rgba(255,255,255,1);
+		}
+	}
+	textarea{
+		resize: none;
+		height: 200px;
+	}
+	button{
+		cursor: pointer;
+		background-color: $aqua;
+		border: none;
+		color: #fff;
+		padding: 12px 0;
+		&:hover{
+			background-color: lighten($aqua, 5%);
+		}
+	}
+}*/

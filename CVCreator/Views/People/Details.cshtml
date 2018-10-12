@@ -1,0 +1,79 @@
+﻿@model CVCreator.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h1>Curriculum Vitae</h1>
+    <hr />
+        <h3>
+            @Html.DisplayNameFor(model => model.Name)
+        </h3>
+           @Html.DisplayFor(model => model.Name)
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Surname)
+        </h3>
+            @Html.DisplayFor(model => model.Surname)
+
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Birth)
+        </h3>
+            @Html.DisplayFor(model => model.Birth)
+
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </h3>
+            @Html.DisplayFor(model => model.Telephone)
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Email)
+        </h3>
+            @Html.DisplayFor(model => model.Email)
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Country)
+        </h3>
+            @Html.DisplayFor(model => model.Country)
+
+        <h3>
+            @Html.DisplayNameFor(model => model.City)
+        </h3>
+            @Html.DisplayFor(model => model.City)
+
+        <h3>Education</h3>
+        @foreach (var item in Model.Educations)
+        {
+            <h4>@item.SchoolName</h4>
+            @Html.DisplayFor(modelItem => item.Field)
+            @Html.DisplayFor(modelItem => item.Degree)
+        }
+        <h3>Languages</h3>
+        @foreach (var item in Model.Languages)
+        {
+            <h4>@item.Name</h4>
+            @Html.DisplayFor(modelItem => item.Level)
+        }
+        <h3>Skills</h3>
+        @foreach (var item in Model.Skills)
+        {
+            <h4>@item.Name</h4>
+            @Html.DisplayFor(modelItem => item.Level)
+        }
+        <h3>Work Experience</h3>
+        @foreach (var item in Model.Experiences)
+        {
+            <h4>@item.JobName</h4>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        }
+        <h3>Certifications</h3>
+        @foreach (var item in Model.Certifications)
+        {
+            <h4>@item.Title</h4>
+            @Html.DisplayFor(modelItem => item.Company)
+        }
+</div>
